@@ -1,6 +1,7 @@
 // update an element in an array at a particular index .
 
 #include<stdio.h>
+#include<unistd.h>
 
 int main (){
 
@@ -31,21 +32,16 @@ int main (){
 
     printf("array updation has started .....\n");
 
-    for (int i = 0; i < size; i++)
-    {
-        if (i==pos)
-        {
-            arr[i]=element;
-            break ;
-        }
-    }
+         arr[pos-1]=element;
+
+        sleep(2);
         
     printf("array updation has Completed  .....\n your new array is \n");
         for (int i = 0; i < size; i++)
         {
-            printf("%d",arr[i]);
+            printf("%d\t",arr[i]);
         }
-        printf("")    
+        printf("\n");
 
     return 0;
 }
