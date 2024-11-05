@@ -24,7 +24,6 @@ int main (){
             printf("%d\t",arr[i]);
         }
 
-    printf("\n Array size before deletion %ld",sizeof(arr)); //doubt
     
     printf("\n Enter the position where you want to Delete :\n");
         scanf("%d",&pos);
@@ -45,13 +44,12 @@ int main (){
     printf("Element Deleted successfully .... :\n");
 
     printf("New array :\n");
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size-1; i++)
         {
-            printf("%d",arr[i]);
+            printf("%d\t",arr[i]);
         }
         printf("\n");
 
-    printf("Array size after deletion %ld \n",sizeof(arr)); //doubt
     
  return 0;   
 }
