@@ -29,11 +29,11 @@ int main (){
     printf("enter the position where you want to insert :\n");
         scanf("%d",&pos);
     
-    for (int i = size+1; i >pos; i--)
-    {
+    for (int i = size+1; i >=pos; i--)  //let say user is counting from 1 
+    {                                   
         arr[i]=arr[i-1];
     }
-    arr[pos]=element;
+    arr[pos-1]=element;                 //but array starts from 0 .
 
     printf("the array has updated ...\n");
     printf("New array is  \n");
