@@ -71,27 +71,68 @@ void enqueue(){
 }
 
 void dequeue(){
+    int value;
+
+    if (isEmpty())
+    {
+        printf("queue underflow\n");
+    }
+
+    else
+    {
+        if (front==rear)
+           {
+                value=queue[front];
+                front=-1;
+                rear=-1;
+           }
+        else
+        {
+            value=queue[front];
+            front=(front+1)%max_size;
+        }
+        traverse();
+    }
 
 }
 
 int isFull(){
 
- return (rear+1)%max_size==front;
-
+    if (( front==0 && rear==max_size-1) || (front==rear+1))
+    {
+        return 1;
+    }
+    return 0;
 }
 
 int isEmpty(){
-
- return front==-1;
-
+    if (front == -1 && rear == -1)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 void traverse(){
     printf("your queue is \n");
 
-     for (int i = front; i <= rear; i++)
+    if (rear < front)
     {
-        printf("%d->", queue[i]);
+        for (int i = front; i < max_size; i++)
+        {
+            printf("%d->", queue[i]);
+        }
+        for (int i = 0; i <= rear; i++)
+        {
+            printf("%d->", queue[i]);
+        }
+    }
+    else
+    {
+        for (int i = front; i <= rear; i++)
+        {
+            printf("%d->", queue[i]);
+        }
     }
     printf("\n");
     printf("front=%d\n", front);
