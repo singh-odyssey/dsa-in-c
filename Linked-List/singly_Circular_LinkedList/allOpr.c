@@ -108,6 +108,7 @@ void preDefinedList()
         }
     }
 }
+
 void insertAtBegin()
 {
     struct node *temp, *ptr;
@@ -129,6 +130,7 @@ void insertAtBegin()
     traverse();
     printf("\n");
 }
+
 void insertAtEnd()
 {
     struct node *temp, *ptr;
@@ -149,6 +151,7 @@ void insertAtEnd()
     traverse();
     printf("\n");
 }
+
 void insertAtSpecificNode()
 {
     struct node *temp, *ptr = head;
@@ -183,6 +186,7 @@ void insertAtSpecificNode()
     traverse();
     printf("\n");
 }
+
 void deleteAtBegin()
 {
     struct node *ptr1 = head;
@@ -198,39 +202,41 @@ void deleteAtBegin()
     traverse();
     printf("\n");
 }
+
 void deleteAtEnd()
 {
-    struct node *ptr=head,*prev;
-    while (ptr->next!=head)
+    struct node *ptr = head, *prev;
+    while (ptr->next != head)
     {
-        prev=ptr;
-        ptr=ptr->next;
+        prev = ptr;
+        ptr = ptr->next;
     }
-    prev->next=ptr->next;
+    prev->next = ptr->next;
     free(ptr);
-     printf("Node deleted successfully :\n");
+    printf("Node deleted successfully :\n");
     traverse();
     printf("\n");
 }
+
 void deleteAtSpecificNode()
 {
-    struct node *ptr=head;
-    struct node *prev=head;
-      int pos;
+    struct node *ptr = head;
+    struct node *prev = head;
+    int pos;
     printf("Enter Position to delete node :\n");
     scanf("%d", &pos);
     for (int i = 1; i < pos; i++)
     {
-        prev=ptr;
-        ptr=ptr->next;
+        prev = ptr;
+        ptr = ptr->next;
     }
-    prev->next=ptr->next;
+    prev->next = ptr->next;
     free(ptr);
-     printf("Node deleted successfully :\n");
+    printf("Node deleted successfully :\n");
     traverse();
     printf("\n");
-
 }
+
 void traverse()
 {
     struct node *ptr = head;

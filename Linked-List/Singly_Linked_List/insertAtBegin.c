@@ -59,17 +59,17 @@ void traverseTheList(struct node *ptr)
     printf("\n");
 }
 
-void insertNode(){
+void insertNode()
+{
     int newData;
     printf("enter the data you want to insert :\n");
-        scanf("%d",&newData);
+    scanf("%d", &newData);
 
     struct node *newNode;
-        newNode=(struct node*)malloc(sizeof(struct node));
-        newNode->data=newData;
-        newNode->next=first;
-        first=newNode;
+    newNode = (struct node *)malloc(sizeof(struct node));
+    newNode->data = newData;
+    newNode->next = first;
+    first = newNode;
 
     traverseTheList(first);
-
 }

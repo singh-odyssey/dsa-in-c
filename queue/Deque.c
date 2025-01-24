@@ -119,7 +119,6 @@ void pushR()
             rear = (rear + 1) % max_size;
             arr[rear] = input;
         }
-        
     }
 
     traverse();
@@ -144,7 +143,7 @@ void popF()
         else
         {
             temp = arr[front];
-            front=(front+1)%max_size;
+            front = (front + 1) % max_size;
         }
     }
     traverse();
@@ -169,7 +168,7 @@ void popR()
         else
         {
             temp = arr[rear];
-            rear=(rear-1)%max_size;
+            rear = (rear - 1) % max_size;
         }
     }
     traverse();
@@ -197,6 +196,7 @@ void traverse()
         printf("rear = %d\n", rear);
     }
 }
+
 int isFull()
 {
     if ((front == 0 && rear == max_size - 1) || (front == rear + 1))
@@ -214,6 +214,7 @@ int isEmpty()
     }
     return 0;
 }
+
 void clear()
 {
     system("clear");

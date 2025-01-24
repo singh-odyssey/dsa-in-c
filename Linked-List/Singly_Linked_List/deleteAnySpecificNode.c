@@ -1,4 +1,4 @@
-//delete a node at anyspecific point from a predefined list .
+// delete a node at anyspecific point from a predefined list .
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,11 +30,12 @@ int main()
     if (y == 'y')
     {
         deleteSpecificNode();
-    }else
+    }
+    else
     {
         printf("Nothing changed in node \n");
     }
-    
+
     return 0;
 }
 
@@ -61,6 +62,7 @@ void createNodeList(int value)
         ptr->next = temp;
     }
 }
+
 void traverse()
 {
     struct node *ptr = head;
@@ -71,31 +73,33 @@ void traverse()
     }
     printf("NULL\n");
 }
+
 void deleteSpecificNode()
 {
     int pos;
-    struct node *ptr=head;
+    struct node *ptr = head;
     struct node *prev;
     printf("enter position of node to delete :\n");
-    scanf("%d",&pos);
-    if (pos==1)
+    scanf("%d", &pos);
+    if (pos == 1)
     {
-     head=ptr->next;
-     free(ptr);
-     traverse();
-     return;
-    }else if (pos<1||pos>10)
+        head = ptr->next;
+        free(ptr);
+        traverse();
+        return;
+    }
+    else if (pos < 1 || pos > 10)
     {
         printf("invalid position \n Nothing changed in node \n");
         return;
     }
-    
+
     for (int i = 1; i < pos; i++)
     {
-        prev=ptr;
-        ptr=ptr->next;        
+        prev = ptr;
+        ptr = ptr->next;
     }
-    prev->next=ptr->next;
+    prev->next = ptr->next;
     free(ptr);
     printf("\nyour new node list is \n");
     traverse();

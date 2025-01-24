@@ -1,7 +1,7 @@
-#include<stdio.h>
+#include <stdio.h>
 #define max_size 5
-int front=-1;
-int rear=-1;
+int front = -1;
+int rear = -1;
 int queue[max_size];
 
 void menu();
@@ -11,16 +11,18 @@ int isFull();
 int isEmpty();
 void traverse();
 
-int main (){
+int main()
+{
 
-menu();
+    menu();
 
     return 0;
 }
 
-void menu(){
+void menu()
+{
 
- int response;
+    int response;
     while (1)
     {
         printf("\n****Choose one of the following :****\n");
@@ -49,28 +51,29 @@ void menu(){
     }
 }
 
-void enqueue(){
+void enqueue()
+{
     int input;
     printf("enter the number \n");
-    scanf("%d",&input);
+    scanf("%d", &input);
     if (isFull())
     {
         printf("queue is overflow \n");
     }
     else
     {
-        if (front==-1)
+        if (front == -1)
         {
             front++;
         }
-        rear=(rear+1)%max_size;
-        queue[rear]=input;
+        rear = (rear + 1) % max_size;
+        queue[rear] = input;
         traverse();
     }
-
 }
 
-void dequeue(){
+void dequeue()
+{
     int value;
 
     if (isEmpty())
@@ -80,32 +83,33 @@ void dequeue(){
 
     else
     {
-        if (front==rear)
-           {
-                value=queue[front];
-                front=-1;
-                rear=-1;
-           }
+        if (front == rear)
+        {
+            value = queue[front];
+            front = -1;
+            rear = -1;
+        }
         else
         {
-            value=queue[front];
-            front=(front+1)%max_size;
+            value = queue[front];
+            front = (front + 1) % max_size;
         }
         traverse();
     }
-
 }
 
-int isFull(){
+int isFull()
+{
 
-    if (( front==0 && rear==max_size-1) || (front==rear+1))
+    if ((front == 0 && rear == max_size - 1) || (front == rear + 1))
     {
         return 1;
     }
     return 0;
 }
 
-int isEmpty(){
+int isEmpty()
+{
     if (front == -1 && rear == -1)
     {
         return 1;
@@ -113,7 +117,8 @@ int isEmpty(){
     return 0;
 }
 
-void traverse(){
+void traverse()
+{
     printf("your queue is \n");
 
     if (rear < front)
