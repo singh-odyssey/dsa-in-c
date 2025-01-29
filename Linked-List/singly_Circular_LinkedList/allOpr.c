@@ -246,5 +246,5 @@ void traverse()
         ptr = ptr->next;
     } while (ptr != head);
 
-    printf("NULL");
+    printf("HEAD");
 }
