@@ -22,10 +22,10 @@ void traverse();
 
 int main()
 {
+    preDefinedList();
     while (1)
     {
         int input;
-        preDefinedList();
         printf("\n\nYour Linked list is :\n");
         traverse();
         printf("\n*************************************************\n\n");
@@ -109,20 +109,62 @@ void insertAtBegin()
     scanf("%d", &input);
     temp = (struct node *)malloc(sizeof(struct node));
     temp->data = input;
-    head->prev->next = temp;
     temp->prev = head->prev;
     temp->next = head;
+    head->prev->next = temp;
     head->prev = temp;
     head = temp;
     printf("\nDATA INSERTED");
+    return;
 }
 
 void insertAtEnd()
 {
+    int input;
+    struct node *temp, *ptr = head;
+    temp = (struct node *)malloc(sizeof(struct node));
+    printf("Enter data to insert \n ");
+    scanf("%d", &input);
+    temp->data = input;
+    temp->prev = head->prev;
+    temp->next = head;
+    head->prev->next = temp;
+    head->prev = temp;
+    printf("\nDATA INSERTED");
 }
 
 void insertAtSpecificNode()
 {
+    int input, pos;
+    printf("Enter the position to insert element \n");
+    scanf("%d", &pos);
+    printf("Enter the element \n");
+    scanf("%d", &input);
+
+    struct node *temp, *ptr = head;
+    temp = (struct node *)malloc(sizeof(struct node));
+    temp->data = input;
+
+    if (pos == 1)
+    {
+        temp->prev = head->prev;
+        temp->next = head;
+        head->prev->next = temp;
+        head->prev = temp;
+        head = temp;
+    }
+    else
+    {
+        for (int i = 1; i < pos - 1; i++)
+        {
+            ptr = ptr->next;
+        }
+        temp->next = ptr->next;
+        temp->prev = ptr->next->prev;
+        ptr->next->prev = temp;
+        ptr->next = temp;
+        printf("\nDATA INSERTED");
+    }
 }
 
 void deleteAtBegin()
@@ -139,13 +181,16 @@ void deleteAtSpecificNode()
 
 void traverse()
 {
-    struct node *ptr;
-    ptr = head;
+    if (head == NULL)
+    {
+        printf("List is empty.\n");
+        return;
+    }
+    struct node *ptr = head;
     do
     {
         printf("%d -> ", ptr->data);
         ptr = ptr->next;
-
     } while (ptr != head);
     printf("HEAD");
 }
