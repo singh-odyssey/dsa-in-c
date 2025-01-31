@@ -169,14 +169,49 @@ void insertAtSpecificNode()
 
 void deleteAtBegin()
 {
+    struct node *ptr = head;
+    ptr->prev->next = ptr->next;
+    ptr->next->prev = ptr->prev;
+    head = ptr->next;
+    free(ptr);
+    printf("\nDATA DELETED");
 }
 
 void deleteAtEnd()
 {
+    struct node *ptr = head;
+    ptr = ptr->prev;
+    ptr->prev->next = ptr->next;
+    ptr->next->prev = ptr->prev;
+    free(ptr);
+    printf("\nDATA DELETED");
 }
 
 void deleteAtSpecificNode()
 {
+    int pos;
+    struct node *ptr = head;
+    printf("Enter the positon to delete element \n");
+    scanf("%d", &pos);
+    if (pos == 1)
+    {
+        ptr->prev->next = ptr->next;
+        ptr->next->prev = ptr->prev;
+        head = ptr->next;
+        free(ptr);
+        printf("\nDATA DELETED");
+    }
+    else
+    {
+        for (int i = 1; i < pos; i++)
+        {
+            ptr = ptr->next;
+        }
+        ptr->prev->next = ptr->next;
+        ptr->next->prev = ptr->prev;
+        free(ptr);
+        printf("\nDATA DELETED");
+    }
 }
 
 void traverse()
