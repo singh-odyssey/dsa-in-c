@@ -28,6 +28,26 @@ void preOrder(struct node *root)
     preOrder(root->right);
 }
 
+void inOrder(struct node *root)
+{
+    if (root != NULL)
+    {
+        inOrder(root->left);
+        printf("%d ", root->data);
+        inOrder(root->right);
+    }
+}
+
+void postOrder(struct node *root)
+{
+    if (root != NULL)
+    {
+        postOrder(root->left);
+        inOrder(root->right);
+        printf("%d ", root->data);
+    }
+}
+
 int main()
 {
     struct node *root = createNode(10);
@@ -35,9 +55,15 @@ int main()
     root->right = createNode(30);
     root->left->left = createNode(40);
     root->left->right = createNode(50);
+    printf("PreOrder traversal -> ");
     preOrder(root);
     printf("\n");
-
+    printf("InOrder traversal -> ");
+    inOrder(root);
+    printf("\n");
+    printf("PostOrder traversal -> ");
+    postOrder(root);
+    printf("\n");
 
     return 0;
 }
