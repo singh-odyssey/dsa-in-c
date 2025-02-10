@@ -44,10 +44,41 @@ void inorderTraversal(struct node *root)
     }
 }
 
+void insert(int key, struct node *root)
+{
+    struct node *prev;
+    while (root != NULL)
+    {
+        prev = root;
+        if (key == root->data)
+        {
+            printf("Element already exist\n");
+            return;
+        }
+        else if (key < root->data)
+        {
+            root = root->left;
+        }
+        else
+        {
+            root = root->right;
+        }
+    }
+    struct node *keyNode = insertNode(root, key);
+    if (key < prev->data)
+    {
+        prev->left = keyNode;
+    }
+    else
+    {
+        prev->right = keyNode;
+    }
+}
+
 int main()
 {
-    struct node *root=NULL;
-    int data, n;
+    struct node *root = NULL;
+    int data, n, key;
 
     printf("Enter the number of nodes: ");
     scanf("%d", &n);
@@ -61,6 +92,12 @@ int main()
 
     printf("Inorder Traversal -> : ");
 
+    inorderTraversal(root);
+
+    printf("\nEnter the Element to insert: \n");
+    scanf("%d", &key);
+    insert(key, root);
+    printf("Element insertion Successful: \n");
     inorderTraversal(root);
 
     return 0;
